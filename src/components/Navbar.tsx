@@ -91,15 +91,16 @@ export default function Navbar() {
                             ))}
                             <div className="flex gap-4 mt-4">
                                 <a
-                                    href="https://github.com/samkitjain"
+                                    href="https://github.com/sammkkit/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-gray-400 hover:text-white"
+                                    className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     <Github size={20} />
                                 </a>
                                 <a
-                                    href="https://linkedin.com/in/samkitjain"
+                                    href="https://www.linkedin.com/in/samkit-jain-ba02a41b8/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-gray-400 hover:text-white"

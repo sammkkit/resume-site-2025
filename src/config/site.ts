@@ -4,9 +4,9 @@ export const siteConfig = {
     url: "https://samkitjain.dev",
     ogImage: "https://samkitjain.dev/og.jpg",
     links: {
-        github: "https://github.com/sammkkit",
-        linkedin: "https://linkedin.com/in/",
-        twitter: "https://twitter.com/samkitjain",
+        github: "https://github.com/sammkkit/",
+        linkedin: "https://www.linkedin.com/in/samkit-jain-ba02a41b8/",
+        twitter: "https://twitter.com/",
         email: "mailto:samkitjain430@gmail.com",
     },
     // Replace this with your Google Drive / Dropbox public link

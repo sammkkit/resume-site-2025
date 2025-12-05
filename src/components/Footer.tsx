@@ -13,15 +13,15 @@ export default function Footer() {
 
                 <div className="flex gap-6">
                     <a
-                        href="https://github.com/samkitjain"
+                        href="https://github.com/sammkkit/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-primary transition-colors"
+                        className="p-2 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-primary/20 transition-all duration-300 hover:scale-110"
                     >
                         <Github size={20} />
                     </a>
                     <a
-                        href="https://linkedin.com/in/samkitjain"
+                        href="https://www.linkedin.com/in/samkit-jain-ba02a41b8/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-secondary transition-colors"
