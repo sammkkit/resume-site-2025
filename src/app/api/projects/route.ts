@@ -9,7 +9,7 @@ export async function GET() {
         const projects = await Project.find({}).sort({ order: 1 });
         return NextResponse.json(projects);
     } catch (error) {
-        return NextResponse.json({ error: "Failed to fetch projects" }, { status: 500 });
+        return NextResponse.json({ error: (error as Error).message }, { status: 500 });
     }
 }
 

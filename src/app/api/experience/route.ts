@@ -9,7 +9,7 @@ export async function GET() {
         const experience = await Experience.find({}).sort({ order: 1 });
         return NextResponse.json(experience);
     } catch (error) {
-        return NextResponse.json({ error: "Failed to fetch experience" }, { status: 500 });
+        return NextResponse.json({ error: (error as Error).message }, { status: 500 });
     }
 }
 
