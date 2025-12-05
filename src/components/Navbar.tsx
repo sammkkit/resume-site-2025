@@ -51,7 +51,7 @@ export default function Navbar() {
                         </Link>
                     ))}
                     <a
-                        href="https://github.com/samkitjain"
+                        href="https://github.com/sammkkit"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-300 hover:text-white transition-colors"
