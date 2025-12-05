@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import { Skill } from "@/models/Skill";
+import { isAuthenticated, unauthorizedResponse } from "@/lib/auth";
 
 export async function GET() {
     try {
@@ -13,6 +14,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+    if (!isAuthenticated(request)) {
+        return unauthorizedResponse();
+    }
+
     try {
         await connectDB();
         const body = await request.json();
@@ -22,3 +27,4 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Failed to create skill" }, { status: 500 });
     }
 }
+

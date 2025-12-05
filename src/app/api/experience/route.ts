@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import { Experience } from "@/models/Experience";
+import { isAuthenticated, unauthorizedResponse } from "@/lib/auth";
 
 export async function GET() {
     try {
@@ -13,11 +14,15 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+    if (!isAuthenticated(request)) {
+        return unauthorizedResponse();
+    }
+
     try {
         await connectDB();
         const body = await request.json();
-        const exp = await Experience.create(body);
-        return NextResponse.json(exp, { status: 201 });
+        const experience = await Experience.create(body);
+        return NextResponse.json(experience, { status: 201 });
     } catch (error) {
         return NextResponse.json({ error: "Failed to create experience" }, { status: 500 });
     }

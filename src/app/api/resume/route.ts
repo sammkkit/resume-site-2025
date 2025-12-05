@@ -1,6 +1,8 @@
+
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import { SiteConfig } from "@/models/SiteConfig";
+import { isAuthenticated, unauthorizedResponse } from "@/lib/auth";
 
 export async function GET() {
     try {
@@ -16,6 +18,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+    if (!isAuthenticated(request)) {
+        return unauthorizedResponse();
+    }
+
     try {
         await connectDB();
         const { resumeUrl } = await request.json();
@@ -32,3 +38,4 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Failed to update resume URL" }, { status: 500 });
     }
 }
+

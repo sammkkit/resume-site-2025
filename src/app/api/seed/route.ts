@@ -4,6 +4,7 @@ import { Project } from "@/models/Project";
 import { Skill } from "@/models/Skill";
 import { Experience } from "@/models/Experience";
 import { SiteConfig } from "@/models/SiteConfig";
+import { isAuthenticated, unauthorizedResponse } from "@/lib/auth";
 
 const initialProjects = [
     {
@@ -113,7 +114,12 @@ const initialExperience = [
     },
 ];
 
-export async function GET() {
+export async function GET(request: Request) {
+    // Protect the seed route!
+    if (!isAuthenticated(request)) {
+        return unauthorizedResponse();
+    }
+
     try {
         await connectDB();
 
