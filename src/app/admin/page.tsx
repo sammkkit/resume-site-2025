@@ -25,10 +25,21 @@ export default function AdminPage() {
                 },
             });
 
-            const data = await res.json();
+            let data;
+            try {
+                const text = await res.text();
+                try {
+                    data = JSON.parse(text);
+                } catch {
+                    // If response is not JSON, use the text directly
+                    data = { error: text || res.statusText };
+                }
+            } catch (e) {
+                data = { error: "Failed to parse response" };
+            }
 
             if (res.ok) {
-                setStatus("Success: " + data.message);
+                setStatus("Success: " + (data.message || "Operation completed"));
             } else {
                 setStatus("Error: " + (data.error || "Failed to seed"));
             }
