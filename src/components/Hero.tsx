@@ -4,28 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import Button from "./ui/Button";
 import Background3D from "./Background3D";
-import { siteConfig } from "@/config/site";
-import { useState, useEffect } from "react";
 
 export default function Hero() {
-    const [resumeUrl, setResumeUrl] = useState(siteConfig.resumeUrl);
-
-    useEffect(() => {
-        const fetchResume = async () => {
-            try {
-                const res = await fetch("/api/resume");
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.resumeUrl) {
-                        setResumeUrl(data.resumeUrl);
-                    }
-                }
-            } catch (error) {
-                console.error("Failed to fetch resume URL", error);
-            }
-        };
-        fetchResume();
-    }, []);
 
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -67,7 +47,7 @@ export default function Hero() {
                         <Button
                             variant="outline"
                             size="lg"
-                            onClick={() => window.open(resumeUrl, "_blank")}
+                            onClick={() => window.open("/api/resume/download", "_blank")}
                         >
                             Download Resume <Download className="ml-2" />
                         </Button>
